@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shapes with Color and Gradient</title>
+<style>
+    canvas {
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400"></canvas>
+<script>
+    // Get the canvas element and its context
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // Draw a rectangle with a solid fill color
+    ctx.fillStyle = "#ff0000"; // Red fill color
+    ctx.fillRect(50, 50, 100, 75); // Rectangle (x, y, width, height)
+
+    // Draw a circle with a gradient fill
+    var gradient = ctx.createRadialGradient(300, 75, 10, 300, 75, 100);
+    gradient.addColorStop(0, "yellow");
+    gradient.addColorStop(1, "orange");
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(300, 75, 50, 0, 2 * Math.PI);
+    ctx.fill();
+
+    // Draw a triangle with a linear gradient fill
+    var gradient2 = ctx.createLinearGradient(200, 200, 400, 200);
+    gradient2.addColorStop(0, "blue");
+    gradient2.addColorStop(1, "green");
+    ctx.fillStyle = gradient2;
+    ctx.beginPath();
+    ctx.moveTo(250, 200); // Starting point
+    ctx.lineTo(350, 200); // First point
+    ctx.lineTo(300, 300); // Second point
+    ctx.closePath(); // Close the path
+    ctx.fill();
+</script>
+</body>
+</html>
